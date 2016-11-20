@@ -1,3 +1,5 @@
 temp
 /Code/ipch
 /Code/*.sdf
+lib
+/Code/*.opensdf
