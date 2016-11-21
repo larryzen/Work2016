@@ -5,3 +5,5 @@ lib
 /Code/*.opensdf
 /Code/components/金蟾捕鱼/游戏服务器/JCBY/*.APS
 /Code/components/金蟾捕鱼/游戏服务器/JCBY/*
+/Code/cbin
+/Code/sbin
