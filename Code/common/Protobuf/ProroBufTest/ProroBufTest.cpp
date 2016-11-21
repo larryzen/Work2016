@@ -31,7 +31,7 @@ static void test(struct pbc_env *env) {
 	//ÕËºÅ
 	pbc_wmessage_string(w_msg, "list_id", "12345", 0);
 	//½ÇÉ«Êý¾Ý1
-	struct pbc_wmessage * user = pbc_wmessage_message(w_msg , "LoginUserList");
+	struct pbc_wmessage * user = pbc_wmessage_message(w_msg , "list");
 	pbc_wmessage_string(user , "uid", "111" , -1);
 	pbc_wmessage_string(user , "name", "aaa" , -1);
 	pbc_wmessage_integer(user , "photo", 12345 , 0);
