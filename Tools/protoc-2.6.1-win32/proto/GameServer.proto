@@ -1,0 +1,190 @@
+package com.game.Protobuf;
+option optimize_for = LITE_RUNTIME;
+
+
+message SGOMsMapInfo
+{
+	required int32 mapid = 1;
+}
+
+message SCGMsPlayerInfo
+{
+	required int32 ret = 1;
+	optional string gameId = 2;
+	optional int32 nickName = 3;
+	optional int32 gold = 4;
+	optional int32 diamonds = 5;
+	optional int32 headID = 6;
+	optional int32 Prop1 = 7;
+	optional int32 Prop2 = 8;
+	optional int32 vip = 9;
+	optional int32 level = 10;
+	
+}
+
+message GamePlayerInfo
+{
+	required bool isMyself =1;
+	required int32 chairID = 2;
+	required string nickName = 3;
+	required string gameid = 4;
+	required int32 gold = 5;
+	optional int32 diamonds = 6;
+	optional int32 itemStop = 7;
+	optional int32 itemLock = 8;
+	optional int32 vip = 9;
+	optional int32 level = 10;
+	optional int32 cannonLv = 11;
+	required int32 headID = 12;
+}
+
+message COGMsEntyrGame
+{
+	required string gameId = 1;
+}
+
+message SGOMsPlayerInfo
+{
+	repeated GamePlayerInfo playerList = 1;	
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+message Fish_Object
+{
+	required int32 wID = 1;
+	required int32 cbType = 2; 
+};
+
+message Net_Object
+{
+	required int32 wID = 1; //网的ID
+	required int32 cbType = 2; //网的类型
+};
+
+
+message SGOMs_Fish_Path 
+{
+	required int32 cbType = 1;//路径类型
+	required int32 cbCount = 2;//实际鱼的数量
+	required int32 cbSeed = 3;//随机和种子
+	repeated Fish_Object FishNetObject = 4;//路径中鱼的信息
+};
+
+
+
+message SGOMs_Fish_Group
+{
+	required int32 cbType = 1;//群组类型
+	required int32 cbSeed = 2;//随机种子
+	required float fPassTime = 3;//阵型出现累计时间，单位秒
+	required int32 wCount = 4;
+	repeated Fish_Object FishGroupIDs = 5;//阵型出现后被杀死的鱼
+};
+
+
+message SGOMs_Fire_Success //其它玩家开火成功
+{
+    required int32 cbChairID = 1;
+    required int32 fRote = 2;
+};
+
+message SGOMs_Fire_Failed //开火失败
+{
+    required int32 wChairID = 1;//可改进，使用BYTE即可
+    required string szReason = 2;
+};
+
+message SGOMs_Change_Cannon_Ret //改炮结果
+{
+    required int32 cbChairID = 1;
+    required int32 cbStyle = 2;
+	required int32 wCost = 3;
+};
+
+
+message SGOMs_Cast_Nets_Success //撒网成功
+{
+	required int32 cbCount = 1; //打中鱼的数目
+	required int32 cbChairID = 2; //玩家信息
+	required int32 totalGoin = 3;//玩家当前分数
+	required int32 addGoin = 4;//玩家增加的分数
+	repeated Fish_Object FishIDs = 6; //打中的鱼
+};
+
+//锁定的道具
+message SGOMs_Get_ItemLock
+{
+	required int32 gameID = 1;
+}
+
+//定屏道具
+message SGOMs_Get_ItemStop
+{
+	required int32 gameID = 1;
+}
+
+message COGMs_OnFire //开火
+{
+    required float fRote = 1;
+	required int32 canonlv = 2;
+};
+
+//撒网消息
+message COGMs_Cast_Nets
+{
+	required int32 cbCount = 1;
+	required int32 wRatio = 2;
+	repeated Fish_Object FishIDs = 3;
+};
+
+message COGMs_HitTeam
+{
+	required int32 cbCount = 1;
+	required Fish_Object hitFish = 2;
+	repeated Net_Object FishIDs = 3;
+};
+
+message SGOMs_HitTeam_Success
+{
+	required int32 cbCount = 1;
+	required int32 cbChairID = 2;
+	required int32 totalGoin = 3;
+	required int32 addGoin = 4;//玩家增加的分数
+	required Fish_Object hitFish = 5;
+	repeated Net_Object FishIDs = 6;
+};
+
+message COGMs_HitSceenBomb //打中炸弹
+{
+	required int32 wRatio = 1;
+	required int32 cbCount = 2;
+	repeated Fish_Object FishIDs = 3;
+};
+
+message SGOMs_HitSceenBomb_Success
+{
+	required int32 cbCount = 1;
+	required int32 cbChairID = 2;
+	required int32 totalGoin = 3;
+	required int32 addGoin = 4;//玩家增加的分数
+	required Fish_Object hitFish = 5;
+	repeated Fish_Object FishIDs = 6;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

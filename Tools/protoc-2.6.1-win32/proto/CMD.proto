@@ -1,0 +1,53 @@
+package com.game.Protobuf;
+option optimize_for = LITE_RUNTIME;
+
+enum CCMD {
+	C_Connect = 1;
+	C_Disconnect = 2;
+	C_Guest = 3;
+	C_Registered = 5; 
+	C_Login = 6;  
+	C_Switch = 7; 
+	C_LogOut = 8; 
+
+	C_CLRegisterModel=9;
+	C_CLIdentity=10;
+	
+	C_OCIdentity = 11;
+	
+	C_GCRegisterModel = 12;
+	C_OGEntryGame = 13;
+	C_GOGetGameIDInfo = 14;
+	C_OGOnFire = 15; //开火
+	C_OGOnNet = 16; //撒网
+	C_OGOnSceenBomb = 17;//全屏炸弹
+	
+};
+
+enum SCMD {
+	S_Error = 100;
+	S_LoginSucc = 101;
+	S_LoginFail = 102;
+	S_Disconnect = 103;
+	S_Email = 104;
+	S_SignIn = 105;
+	
+	S_LCRegisterModel = 106;
+	S_LCIdentity = 107;
+	S_COUserData = 108;
+	S_CORoomList = 109;
+	
+	S_GOGamePlayerInfo = 150;
+	
+	S_GOMapInfo = 151; // 场景地图
+	
+	S_GOPutFish = 152; //撒鱼
+	S_GOPutFishGroup = 153; //阵型鱼
+	S_GOFireSuccess=154; //开火成功
+	S_GOFireFire=155; //开火失败
+	S_GONetSuccess = 156;//撒网成功
+	S_GOOnSceenBombSucc = 157;//打中全屏炸弹
+	
+	
+	
+}

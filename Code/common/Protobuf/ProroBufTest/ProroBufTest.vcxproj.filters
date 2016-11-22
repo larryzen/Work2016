@@ -24,12 +24,30 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="GameServer.pb.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginServer.pb.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CMD.pb.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ProroBufTest.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginServer.pb.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CMD.pb.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GameServer.pb.cc">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,0 +1,9 @@
+echo clean...
+del .\luascript\*.lua
+del .\java\*.java
+echo java...
+call javaProtoc.bat
+echo lua...
+call luaProtoc.bat
+echo end
+pause

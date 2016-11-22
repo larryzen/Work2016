@@ -1,0 +1,48 @@
+package com.game.Protobuf;
+option optimize_for = LITE_RUNTIME;
+
+
+message ServerC {
+	required int32 id = 1;			//id
+	required string name = 2;		//service name
+	required string ip = 3;
+	required int32 port = 4;
+	required int32 number = 5;		//server status
+	required int32 recommend = 6;		//0 is recommend; 1 is no recommend
+};
+
+
+message CGCMsRegisterServer
+{
+	required ServerC server = 1;
+}
+
+message COCMSTokeValidate
+{
+	required string token = 1;
+	required string gameID = 2;
+}
+
+
+
+message SCOMsPlayerInfo
+{
+	required int32 gold = 1;
+	required int32 diamonds = 2;
+	required bool ischangePwd = 3;
+	required int32 Prop1 = 4;
+	required int32 Prop2 = 5;
+	repeated ServerC server = 6;	
+	optional int32 nickName = 7;
+	optional int32 headID = 8;
+	optional int32 vip = 9;
+	optional int32 level = 10;
+	
+};
+
+message SCOMsRoomList
+{
+	required ServerC server = 1;
+};
+
+

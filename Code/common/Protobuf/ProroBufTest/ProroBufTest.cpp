@@ -2,6 +2,7 @@
 #include <vector>
 #include <string.h>
 #include <assert.h>
+#ifdef  PROTOBUF3
 #include "pbc.h"
 #pragma comment(lib, "pbc.lib")
 
@@ -75,3 +76,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	getchar();
 	return 0;
 }
+//�ϰ汾
+#else
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	
+	return 0;
+}
+
+
+#endif
