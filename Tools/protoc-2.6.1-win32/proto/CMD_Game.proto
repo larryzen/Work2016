@@ -1,0 +1,58 @@
+package com.game.Protobuf;
+option optimize_for = LITE_RUNTIME;
+
+
+//游戏列表命令码
+enum GAMELISTCMD 
+{
+  MDM_CS_SERVER_LIST		=	1;								//列表信息
+  SUB_CS_GET_SERVER_LIST	=	2;								//请求列表
+  SUB_CS_LIST_INFO			=	100;							//列表信息
+  SUB_CS_LIST_TYPE			=	101;							//类型列表
+  SUB_CS_LIST_KIND			=	102;							//种类列表
+  SUB_CS_LIST_STATION		=	103;							//站点列表
+  SUB_CS_LIST_SERVER		=	104;							//房间列表
+  SUB_CS_LIST_FINISH		=	105;							//列表完成
+}
+
+
+//列表信息
+message CMD_CS_ListInfo
+{
+	required uint64								dwTypeCount = 1;		//类型数目
+	required uint64								dwKindCount = 2;		//种类数目
+	required uint64								dwServerCount = 3;		//房间数目
+	required uint64								dwStationCount = 4;		//站点数目
+};
+
+
+//房间管理命令码
+enum ROMMGRCMD 
+{
+  MDM_CS_SERVER_MANAGER			=	1;								//房间管理
+  SUB_CS_REG_GAME_SERVER		=	2;								//注册房间
+  SUB_CS_UNREG_GAME_SERVER		=	3;								//注销房间
+  SUB_CS_SERVER_ONLINE_COUNT	=	4;								//房间人数
+}
+
+
+//注册房间
+//message CMD_CS_RegGameServer
+//{
+//	tagGameServer						GameServer = 1;						//房间信息
+//};
+
+//注销房间
+message CMD_CS_UnRegGameServer
+{
+	required uint32								wKindID = 1;				//名称号码
+	required uint32								wServerID = 2;				//房间号码
+};
+
+//房间人数
+message CMD_CS_ServerOnLineCount
+{
+	required uint32								wKindID = 1;				//名称号码
+	required uint32								wServerID = 2;				//房间号码
+	required uint64								dwOnLineCount = 3;			//在线人数
+};
