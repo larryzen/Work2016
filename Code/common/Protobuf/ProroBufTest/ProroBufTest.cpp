@@ -12,15 +12,12 @@ int main()
 	string strSend = "";
 	gs.SerializeToString(&strSend);
 	//gs.SerailzeToString(strSend);
-
 	string strAccept = strSend;
 	SGOMsMapInfo gsAccept;
 	if(gsAccept.ParseFromString(strAccept))  // ½âÎö¸Ã×Ö·û´®
 	{
 		printf("val :%d\n", gsAccept.mapid());
-		//std::count << "mapID:" << gsAccept.mapid() << endl;
-	}
-	
+	}	
 	getchar();
 	return 0;
 }

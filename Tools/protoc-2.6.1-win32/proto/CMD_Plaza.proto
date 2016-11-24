@@ -1,0 +1,167 @@
+package com.game.Protobuf;
+option optimize_for = LITE_RUNTIME;
+//帐号登录
+message CMD_GP_LogonByAccounts
+{
+	required	uint64								dwPlazaVersion = 1;			//广场版本
+	required	string								szAccounts = 2;				//登录帐号
+	required	string								szPassuint32 = 3;			//登录密码
+};
+
+//I D 登录
+message CMD_GP_LogonByUserID
+{
+	required	uint64								dwPlazaVersion = 1;			//广场版本
+	required	uint64								dwUserID = 2;				//用户 I D
+	required	string								szPassuint32 = 3;			//登录密码
+};
+
+//注册帐号
+message CMD_GP_RegisterAccounts
+{
+	required	uint32								wFaceID = 1;				//头像标识
+	optional	uint32								cbGender = 2;				//用户性别
+	required	uint64								dwPlazaVersion = 3;			//广场版本
+	required	string								szSpreader = 4;				//推广人名
+	required	string								szAccounts = 5;				//登录帐号
+	required	string								szPassuint32 = 6;			//登录密码
+};
+
+//登陆成功
+message CMD_GP_LogonSuccess
+{
+required	uint32								wFaceID = 1;						//头像索引
+required	uint32								cbGender = 2;						//用户性别
+required	uint32								cbMember = 3;						//会员等级
+required	uint64								dwUserID = 4;						//用户 I D
+required	uint64								dwGameID = 5;						//游戏 I D
+required	uint64								dwExperience = 6;					//用户经验
+	
+	//扩展信息
+required	uint64								dwCustomFaceVer = 7;				//头像版本
+};
+
+//登陆失败
+message CMD_GP_LogonError
+{
+required	sint64								lErrorCode = 1;					//错误代码
+required	string								szErrorDescribe = 2;			//错误消息
+};
+
+//////////////////////////////////////////////////////////////////////////
+//游戏列表命令码
+enum GCMD 
+{
+              MDM_GP_SERVER_LIST	=		2;								//列表信息
+
+              SUB_GP_LIST_TYPE		=		100;							//类型列表
+              SUB_GP_LIST_KIND		=		101;							//种类列表
+              SUB_GP_LIST_STATION	=		102;							//站点列表
+              SUB_GP_LIST_SERVER	=		103;							//房间列表
+              SUB_GP_LIST_FINISH	=		104;							//发送完成
+              SUB_GP_LIST_CONFIG	=		105;							//列表配置
+}
+
+
+//列表配置
+message CMD_GP_ListConfig
+{
+required	uint32							bShowOnLineCount = 1;			//显示人数
+};
+
+//////////////////////////////////////////////////////////////////////////
+//系统命令码
+enum SYSCMD 
+{
+              MDM_GP_SYSTEM			=		3;								//系统命令
+              SUB_GP_VERSION		=		100;							//版本通知
+              SUB_SP_SYSTEM_MSG		=		101;							//系统消息
+}
+
+//版本通知
+message CMD_GP_Version
+{
+	required	uint32					bNewVersion = 1;					//更新版本
+	required	uint32					bAllowConnect = 2;					//允许连接
+};
+
+//////////////////////////////////////////////////////////////////////////
+enum CCMD 
+{
+              MDM_GP_USER				=	4;								//用户信息
+              SUB_GP_USER_UPLOAD_FACE	=	100;							//上传头像
+              SUB_GP_USER_DOWNLOAD_FACE	=	101;							//下载头像
+              SUB_GP_UPLOAD_FACE_RESULT	=	102;							//上传结果
+              SUB_GP_DELETE_FACE_RESULT	=	103;							//删除结果
+              SUB_GP_CUSTOM_FACE_DELETE	=	104;							//删除头像
+              SUB_GP_MODIFY_INDIVIDUAL	=	105;							//个人资料
+              SUB_GP_MODIFY_INDIVIDUAL_RESULT =	106;						//修改结果
+}
+
+
+//个人资料
+message CMD_GP_ModifyIndividual
+{
+required	uint64							dwUserID = 1;				//玩家 ID
+required	string							szNickname = 2;				//玩家昵称
+required	int32							nGender = 3;				//玩家性别
+required	int32							nAge = 4;					//玩家年龄
+required	string							szAddress = 5;				//玩家地址
+required	string							szUnderWrite = 6;			//个性签名
+required	string							szPassuint32 = 7;			//玩家密码
+};
+
+//定义头像
+message CMD_GP_UploadCustomFace
+{
+required	uint64								dwUserID = 1;				//玩家 ID
+required	uint32								wCurrentSize = 2;			//当前大小
+required	bool								bLastPacket = 3;			//最后标识
+required	bool								bFirstPacket = 4;			//第一个标识
+required	string								bFaceData = 5;				//头像数据
+};
+
+//下载成功
+message CMD_GP_DownloadFaceSuccess
+{
+required	uint64							dwToltalSize = 1;				//总共大小
+required	uint64							dwCurrentSize = 2;				//当前大小
+required	uint64							dwUserID = 3;					//玩家 ID
+required	string							bFaceData = 4;					//头像数据
+};
+
+//下载头像
+message CMD_GP_DownloadFace
+{
+required	uint64							dwUserID = 1;					//玩家 ID
+};
+
+//上传结果
+message CMD_GP_UploadFaceResult
+{
+required	string							szDescribeMsg = 1;				//描述信息
+required	uint64							dwFaceVer = 2;					//头像版本
+required	bool							bOperateSuccess = 3;			//成功标识
+};
+
+//删除结果
+message CMD_GP_DeleteFaceResult
+{
+required	string							szDescribeMsg = 1;				//描述信息
+required	uint64							dwFaceVer = 2;					//头像版本
+required	bool							bOperateSuccess = 3;			//成功标识
+};
+
+//删除消息
+message CMD_GP_CustomFaceDelete
+{
+required	uint64							dwUserID = 1;					//玩家 ID
+required	uint64							dwFaceVer = 2;					//头像版本
+};
+
+//修改结果
+message CMD_GP_ModifyIndividualResult
+{
+required	string							szDescribeMsg = 1;				//描述信息
+required	bool							bOperateSuccess = 2;			//成功标识
+};
