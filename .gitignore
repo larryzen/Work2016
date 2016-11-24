@@ -9,3 +9,6 @@ lib
 /Code/sbin
 Debug
 packages
+/Code/thlib/debug/libprotoc.lib
+/Code/thlib/debug/libprotobuf.lib
+/Code/thlib/debug/libprotobuf-lite.lib
